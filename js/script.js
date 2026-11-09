@@ -1148,6 +1148,41 @@ class Audio {
 
 Audio.ctx = new AudioContext();
 
+// Page-level controls for the standalone GitHub Pages player.
+document.querySelectorAll(".console-swatch").forEach((swatch) => {
+  swatch.addEventListener("click", () => {
+    const shell = swatch.dataset.shell;
+    document.body.className = document.body.className
+      .replace(/\bshell-[a-z]+\b/g, "")
+      .trim();
+    if (shell !== "cloud") document.body.classList.add(`shell-${shell}`);
+    document.querySelectorAll(".console-swatch").forEach((item) => {
+      item.classList.toggle("is-selected", item === swatch);
+    });
+  });
+});
+
+document.querySelectorAll("[data-player-action]").forEach((button) => {
+  button.addEventListener("click", () => {
+    switch (button.dataset.playerAction) {
+      case "sound":
+        vm.volume = vm.volume ? 0 : 0.5;
+        button.textContent = vm.volume ? "🔊" : "🔇";
+        break;
+      case "pause":
+        vm.togglePause();
+        button.textContent = vm.paused ? "▶" : "Ⅱ";
+        break;
+      case "restart":
+        window.location.reload();
+        break;
+      case "fullscreen":
+        document.querySelector(".player-stage").requestFullscreen?.();
+        break;
+    }
+  });
+});
+
 class Video {
   constructor(module, e, el) {
     this.module = module;
