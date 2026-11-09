@@ -455,6 +455,74 @@ body {
 .device-mark strong { font-size: 18px; font-style: italic; letter-spacing: .07em; }
 .device-mark span { font-size: 8px; letter-spacing: .08em; }
 
+.hardware-controls {
+  position: relative;
+  height: 122px;
+  margin: 0 6px;
+}
+
+.dpad-ornament,
+.dpad-ornament::before,
+.dpad-ornament::after {
+  position: absolute;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #5b5c6e, #303140);
+  box-shadow: inset 2px 2px rgba(255,255,255,.22), 2px 3px 3px rgba(0,0,0,.28);
+}
+
+.dpad-ornament {
+  left: 17px;
+  top: 23px;
+  width: 35px;
+  height: 92px;
+}
+
+.dpad-ornament::before,
+.dpad-ornament::after { content: ""; }
+.dpad-ornament::before { width: 92px; height: 35px; left: -29px; top: 29px; }
+.dpad-ornament::after { width: 28px; height: 28px; left: 4px; top: 32px; border-radius: 50%; background: #484958; box-shadow: inset 1px 1px rgba(0,0,0,.35); }
+
+.button-ornament {
+  position: absolute;
+  right: 12px;
+  top: 27px;
+  display: flex;
+  gap: 18px;
+  transform: rotate(-12deg);
+}
+
+.button-ornament b {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  color: #510f35;
+  font-size: 27px;
+  background: radial-gradient(circle at 35% 28%, #d74188, #9b215c 72%);
+  box-shadow: inset 2px 2px rgba(255,255,255,.28), 2px 4px 3px rgba(0,0,0,.28);
+}
+
+.small-buttons {
+  position: absolute;
+  right: 24px;
+  bottom: 2px;
+  display: flex;
+  gap: 15px;
+  transform: rotate(-12deg);
+}
+
+.small-buttons i {
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: #1e2031;
+  background: #686a7c;
+  font-size: 7px;
+  font-style: normal;
+  font-weight: 800;
+  box-shadow: inset 1px 1px rgba(255,255,255,.2), 1px 2px 2px rgba(0,0,0,.22);
+}
+
 #controller {
   display: block;
   position: relative;
@@ -494,6 +562,7 @@ body {
   .screen-bezel { padding: 22px 13px 24px; }
   .device-mark strong { font-size: 14px; }
   .device-mark span { font-size: 6px; }
+  .hardware-controls { height: 96px; transform: scale(.82); transform-origin: top left; width: 122%; }
   #controller { height: 125px; }
   #controller_dpad { transform: scale(.58); }
   #controller_a, #controller_b { transform: scale(.78); transform-origin: bottom right; bottom: 36px; }
@@ -504,3 +573,57 @@ body {
   #controller_select { right: 76px; }
   .keyboard-help { font-size: 9px; }
 }
+
+/* Keep GB Studio's original controller event targets, but place them over the
+   visible hardware controls above. This makes the device buttons clickable. */
+.hardware-controls #controller {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 122px;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.hardware-controls #controller > * { pointer-events: auto; }
+.hardware-controls #controller_dpad {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 92px;
+  height: 122px;
+  bottom: auto;
+  transform: none;
+}
+
+.hardware-controls #controller_dpad > div,
+.hardware-controls #controller_a,
+.hardware-controls #controller_b,
+.hardware-controls #controller_start,
+.hardware-controls #controller_select {
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  line-height: 1;
+}
+
+.hardware-controls #controller_left { left: 0; top: 52px; width: 31px; height: 35px; }
+.hardware-controls #controller_right { left: 61px; top: 52px; width: 31px; height: 35px; }
+.hardware-controls #controller_up { left: 30px; top: 23px; width: 35px; height: 30px; }
+.hardware-controls #controller_down { left: 30px; top: 81px; width: 35px; height: 33px; }
+.hardware-controls #controller_b { right: 84px; top: 27px; width: 54px; height: 54px; bottom: auto; }
+.hardware-controls #controller_a { right: 12px; top: 27px; width: 54px; height: 54px; bottom: auto; }
+.hardware-controls #controller_select { right: 94px; top: 89px; width: 56px; height: 28px; bottom: auto; }
+.hardware-controls #controller_start { right: 23px; top: 89px; width: 56px; height: 28px; bottom: auto; }
+
+.hardware-controls #controller_dpad > div:active,
+.hardware-controls #controller_a:active,
+.hardware-controls #controller_b:active,
+.hardware-controls #controller_start:active,
+.hardware-controls #controller_select:active { opacity: .24; background: #fff; }
