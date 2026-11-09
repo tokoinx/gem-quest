@@ -11,7 +11,13 @@
     
   </head>
   <body>
-    <main class="chromatic" aria-label="Gem Quest game device">
+    <main class="player-page">
+      <header class="player-header">
+        <h1>Gem Quest</h1>
+        <span>GAME BOY COLOR</span>
+      </header>
+      <section class="player-stage">
+    <div class="chromatic" aria-label="Gem Quest game device">
       <div class="device-topline">
         <span>MODRETRO</span><span>CHROMATIC</span>
       </div>
@@ -41,6 +47,26 @@
         </div>
       </div>
       <p class="keyboard-help">Arrow keys: move &nbsp;•&nbsp; Z: A / interact &nbsp;•&nbsp; Enter: Start</p>
+    </div>
+    <div class="player-tools" aria-label="Player options">
+      <div class="color-row" aria-label="Console colors">
+        <button type="button" class="console-swatch is-selected" data-shell="cloud" aria-label="Cloud console"></button>
+        <button type="button" class="console-swatch" data-shell="midnight" aria-label="Midnight console"></button>
+        <button type="button" class="console-swatch" data-shell="wave" aria-label="Wave console"></button>
+        <button type="button" class="console-swatch" data-shell="leaf" aria-label="Leaf console"></button>
+        <button type="button" class="console-swatch" data-shell="inferno" aria-label="Inferno console"></button>
+        <button type="button" class="console-swatch" data-shell="volt" aria-label="Volt console"></button>
+        <button type="button" class="console-swatch" data-shell="bubblegum" aria-label="Bubblegum console"></button>
+      </div>
+      <div class="player-action-row">
+        <button type="button" class="player-action" data-player-action="sound" aria-label="Toggle sound">🔊</button>
+        <button type="button" class="player-action" data-player-action="pause" aria-label="Pause game">Ⅱ</button>
+        <button type="button" class="player-action" data-player-action="restart" aria-label="Restart game">↻</button>
+        <button type="button" class="player-action" data-player-action="fullscreen" aria-label="Toggle fullscreen">⛶</button>
+      </div>
+      <p class="official-help">Click the console to use your keyboard, or press its buttons.</p>
+    </div>
+      </section>
     </main>
     <script src="js/binjgb.js"></script>
     <script src="js/script.js"></script>
