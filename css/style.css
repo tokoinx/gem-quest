@@ -596,6 +596,7 @@ body {
   bottom: auto;
   transform: none;
 }
+.hardware-controls #controller_dpad::before { display: none; }
 
 .hardware-controls #controller_dpad > div,
 .hardware-controls #controller_a,
