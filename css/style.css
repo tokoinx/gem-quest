@@ -365,3 +365,142 @@ body {
 #debug button:active {
   background: #ddd;
 }
+
+/* Gem Quest presentation shell — the emulator and its original controls stay intact. */
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  background: radial-gradient(circle at 50% 5%, #5f668e, #1d2349 58%, #10142c);
+  padding: 28px 16px;
+  box-sizing: border-box;
+}
+
+.chromatic {
+  width: min(100%, 720px);
+  box-sizing: border-box;
+  padding: 20px 28px 18px;
+  border: 5px solid #24263d;
+  border-radius: 24px 24px 42px 24px;
+  color: #24263d;
+  background: linear-gradient(135deg, #d7d9ec, #aeb4d5 60%, #9198bf);
+  box-shadow: 0 18px 0 #11142a, 0 29px 48px rgba(0, 0, 0, 0.52), inset 2px 2px rgba(255,255,255,.65);
+}
+
+.device-topline,
+.device-mark {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.device-topline { font-size: 11px; margin: 0 3px 13px; }
+.device-topline span:last-child { color: #8c2f66; }
+
+.screen-bezel {
+  position: relative;
+  padding: 24px 24px 28px;
+  border: 5px solid #30334f;
+  border-radius: 13px 13px 28px 13px;
+  background: #22253b;
+  box-shadow: inset 0 0 0 3px #111329, inset 4px 4px #424664;
+}
+
+.screen-label {
+  position: absolute;
+  top: 7px;
+  left: 27px;
+  color: #d6d8e8;
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: .1em;
+}
+
+#game {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 256 / 224;
+  display: block;
+  overflow: hidden;
+  background: #202850;
+}
+
+#game canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.power-led {
+  position: absolute;
+  left: 9px;
+  bottom: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ee4e72;
+  box-shadow: 0 0 7px #ee4e72;
+}
+
+.device-mark { margin: 13px 5px 2px; }
+.device-mark strong { font-size: 18px; font-style: italic; letter-spacing: .07em; }
+.device-mark span { font-size: 8px; letter-spacing: .08em; }
+
+#controller {
+  display: block;
+  position: relative;
+  bottom: auto;
+  width: 100%;
+  height: 145px;
+  opacity: 1;
+}
+
+#controller_dpad {
+  left: 3px;
+  bottom: -5px;
+  transform: scale(.72);
+  transform-origin: left bottom;
+}
+
+#controller_a,
+#controller_b { bottom: 43px; }
+#controller_a { right: 20px; }
+#controller_b { right: 105px; }
+#controller_start,
+#controller_select { bottom: 8px; }
+#controller_start { right: 28px; }
+#controller_select { right: 113px; }
+
+.keyboard-help {
+  margin: 0;
+  text-align: center;
+  color: #404565;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  body { padding: 12px 6px; }
+  .chromatic { padding: 14px 15px 13px; border-radius: 18px 18px 33px 18px; }
+  .screen-bezel { padding: 22px 13px 24px; }
+  .device-mark strong { font-size: 14px; }
+  .device-mark span { font-size: 6px; }
+  #controller { height: 125px; }
+  #controller_dpad { transform: scale(.58); }
+  #controller_a, #controller_b { transform: scale(.78); transform-origin: bottom right; bottom: 36px; }
+  #controller_a { right: 7px; }
+  #controller_b { right: 67px; }
+  #controller_start, #controller_select { transform: scale(.78); transform-origin: bottom right; bottom: 3px; }
+  #controller_start { right: 12px; }
+  #controller_select { right: 76px; }
+  .keyboard-help { font-size: 9px; }
+}
