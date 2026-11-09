@@ -11,21 +11,32 @@
     
   </head>
   <body>
-    <div id="game">
-      <canvas id="mainCanvas" width="256" height="224">No Canvas Support</canvas>
-    </div>
-    <div id="controller">
-      <div id="controller_dpad">
-        <div id="controller_left"></div>
-        <div id="controller_right"></div>
-        <div id="controller_up"></div>
-        <div id="controller_down"></div>
+    <main class="chromatic" aria-label="Gem Quest game device">
+      <div class="device-topline">
+        <span>MODRETRO</span><span>CHROMATIC</span>
       </div>
-      <div id="controller_select" class="capsuleBtn">Select</div>
-      <div id="controller_start" class="capsuleBtn">Start</div>
-      <div id="controller_b" class="roundBtn">B</div>
-      <div id="controller_a" class="roundBtn">A</div>
-    </div>      
+      <div class="screen-bezel">
+        <div class="screen-label">DOT MATRIX WITH STEREO SOUND</div>
+        <div id="game">
+          <canvas id="mainCanvas" width="256" height="224">No Canvas Support</canvas>
+        </div>
+        <div class="power-led" aria-hidden="true"></div>
+      </div>
+      <div class="device-mark"><strong>GEM QUEST</strong><span>GAME BOY COLOR ADVENTURE</span></div>
+      <div id="controller" aria-label="Game controls">
+        <div id="controller_dpad">
+          <div id="controller_left"></div>
+          <div id="controller_right"></div>
+          <div id="controller_up"></div>
+          <div id="controller_down"></div>
+        </div>
+        <div id="controller_select" class="capsuleBtn">Select</div>
+        <div id="controller_start" class="capsuleBtn">Start</div>
+        <div id="controller_b" class="roundBtn">B</div>
+        <div id="controller_a" class="roundBtn">A</div>
+      </div>
+      <p class="keyboard-help">Arrow keys: move &nbsp;•&nbsp; Z: A / interact &nbsp;•&nbsp; Enter: Start</p>
+    </main>
     <script src="js/binjgb.js"></script>
     <script src="js/script.js"></script>
     <script src="js/debugger.js"></script>
