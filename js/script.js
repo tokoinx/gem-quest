@@ -213,6 +213,7 @@ class Emulator {
 
     this.bindKeys();
     this.bindTouch();
+    this.bindPointerControls();
 
     this.touchEnabled = "ontouchstart" in document.documentElement;
     this.updateOnscreenGamepad();
@@ -223,6 +224,7 @@ class Emulator {
   destroy() {
     this.gamepad.shutdown();
     this.unbindTouch();
+    this.unbindPointerControls();
     this.unbindKeys();
     this.cancelAnimationFrame();
     clearInterval(this.rewindIntervalId);
@@ -408,6 +410,58 @@ class Emulator {
 
     this.boundTouchRestore = this.touchRestore.bind(this);
     window.addEventListener("touchstart", this.boundTouchRestore);
+  }
+
+  bindPointerControls() {
+    this.pointerFuncs = {
+      controller_left: this.setJoypLeft.bind(this),
+      controller_right: this.setJoypRight.bind(this),
+      controller_up: this.setJoypUp.bind(this),
+      controller_down: this.setJoypDown.bind(this),
+      controller_b: this.setJoypB.bind(this),
+      controller_a: this.setJoypA.bind(this),
+      controller_start: this.setJoypStart.bind(this),
+      controller_select: this.setJoypSelect.bind(this),
+    };
+    this.pointerControls = [
+      $("#controller_left"), $("#controller_right"), $("#controller_up"),
+      $("#controller_down"), bEl, aEl, startEl, selectEl,
+    ];
+    this.boundPointerDown = this.pointerDown.bind(this);
+    this.boundPointerUp = this.pointerUp.bind(this);
+    this.pointerControls.forEach((element) => {
+      element.addEventListener("pointerdown", this.boundPointerDown);
+      element.addEventListener("pointerup", this.boundPointerUp);
+      element.addEventListener("pointerleave", this.boundPointerUp);
+      element.addEventListener("pointercancel", this.boundPointerUp);
+    });
+  }
+
+  unbindPointerControls() {
+    (this.pointerControls || []).forEach((element) => {
+      element.removeEventListener("pointerdown", this.boundPointerDown);
+      element.removeEventListener("pointerup", this.boundPointerUp);
+      element.removeEventListener("pointerleave", this.boundPointerUp);
+      element.removeEventListener("pointercancel", this.boundPointerUp);
+    });
+  }
+
+  pointerDown(event) {
+    if (event.pointerType !== "mouse") return;
+    const setButton = this.pointerFuncs[event.currentTarget.id];
+    if (!setButton) return;
+    setButton(true);
+    event.currentTarget.classList.add("btnPressed");
+    event.preventDefault();
+  }
+
+  pointerUp(event) {
+    if (event.pointerType !== "mouse") return;
+    const setButton = this.pointerFuncs[event.currentTarget.id];
+    if (!setButton) return;
+    setButton(false);
+    event.currentTarget.classList.remove("btnPressed");
+    event.preventDefault();
   }
 
   unbindTouch() {
