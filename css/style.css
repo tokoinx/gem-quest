@@ -627,3 +627,97 @@ body {
 .hardware-controls #controller_b:active,
 .hardware-controls #controller_start:active,
 .hardware-controls #controller_select:active { opacity: .24; background: #fff; }
+
+/* Official-player-inspired page layout */
+body {
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  background-color: #f8f4eb;
+  background-image: radial-gradient(#ded4eb 1px, transparent 1px);
+  background-size: 8px 8px;
+  color: #322a47;
+}
+
+.player-page { max-width: 1040px; margin: 0 auto; padding: 28px 24px 44px; }
+.player-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 3px solid #6d5a85;
+  margin-bottom: 20px;
+  padding: 0 4px 12px;
+}
+.player-header h1 { margin: 0; font-size: clamp(26px, 4vw, 38px); letter-spacing: -.04em; }
+.player-header span { font-family: monospace; font-weight: 800; font-size: 12px; letter-spacing: .12em; }
+.player-stage {
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  min-height: 640px;
+  padding: 28px 20px 22px;
+  border: 3px solid #6d5a85;
+  background: rgba(248, 243, 255, .78);
+}
+
+.player-stage .chromatic {
+  width: min(92vw, 390px);
+  padding: 14px 17px 15px;
+  border-width: 4px;
+  border-radius: 20px 20px 36px 20px;
+  box-shadow: 0 10px 0 #282039, 0 17px 28px rgba(40, 23, 65, .28), inset 2px 2px rgba(255,255,255,.65);
+}
+.player-stage .device-topline { margin-bottom: 8px; }
+.player-stage .screen-bezel { padding: 19px 16px 22px; }
+.player-stage .screen-label { left: 18px; top: 6px; font-size: 6px; }
+.player-stage .power-led { left: 7px; bottom: 12px; }
+.player-stage .device-mark { margin: 9px 3px 0; }
+.player-stage .device-mark strong { font-size: 15px; }
+.player-stage .device-mark span { font-size: 6px; }
+.player-stage .hardware-controls { height: 106px; transform: scale(.88); transform-origin: top left; width: 114%; margin-bottom: -13px; }
+.player-stage .keyboard-help { display: none; }
+
+.player-tools { display: grid; place-items: center; gap: 12px; }
+.color-row, .player-action-row { display: flex; align-items: center; justify-content: center; gap: 11px; }
+.console-swatch {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 2px solid #665272;
+  box-shadow: 2px 2px 0 rgba(42, 29, 61, .3);
+  cursor: pointer;
+}
+.console-swatch.is-selected { outline: 3px solid #272033; outline-offset: 3px; }
+.console-swatch[data-shell="cloud"] { background: #d7d9ec; }
+.console-swatch[data-shell="midnight"] { background: #2e314e; }
+.console-swatch[data-shell="wave"] { background: #73a9cf; }
+.console-swatch[data-shell="leaf"] { background: #82ad6d; }
+.console-swatch[data-shell="inferno"] { background: #d97253; }
+.console-swatch[data-shell="volt"] { background: #ead66e; }
+.console-swatch[data-shell="bubblegum"] { background: #d79abb; }
+.player-action {
+  width: 42px;
+  height: 40px;
+  border: 2px solid #5f5071;
+  box-shadow: 3px 3px 0 #c6b9d1;
+  color: #342946;
+  background: #fffdf6;
+  font: 800 21px/1 monospace;
+  cursor: pointer;
+}
+.player-action:hover, .player-action:focus-visible { background: #eadff4; }
+.official-help { margin: 0; font-size: 12px; font-weight: 700; }
+
+body.shell-midnight .chromatic { background: linear-gradient(135deg, #434967, #252a45 60%, #1d2137); color: #eceeff; }
+body.shell-wave .chromatic { background: linear-gradient(135deg, #c9e8f5, #76b5d9 60%, #5991bd); }
+body.shell-leaf .chromatic { background: linear-gradient(135deg, #d4e7c1, #8cbb72 60%, #669952); }
+body.shell-inferno .chromatic { background: linear-gradient(135deg, #f4c6a9, #d9775e 60%, #ad4c49); }
+body.shell-volt .chromatic { background: linear-gradient(135deg, #fff2ae, #e5cb4e 60%, #be9d28); }
+body.shell-bubblegum .chromatic { background: linear-gradient(135deg, #f5cce2, #d98abb 60%, #b96096); }
+
+@media (max-width: 560px) {
+  .player-page { padding: 18px 10px 28px; }
+  .player-stage { min-height: 0; padding: 20px 7px; }
+  .player-header span { display: none; }
+  .official-help { text-align: center; font-size: 10px; }
+}
