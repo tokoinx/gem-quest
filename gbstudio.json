@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "rom": "rom/gem-quest.gbc",
+  "project": {
+    "name": "Gem Quest",
+    "author": "toko"
+  },
+  "colorCorrection": "default",
+  "customControls": {
+    "up": [
+      "ArrowUp",
+      "w"
+    ],
+    "down": [
+      "ArrowDown",
+      "s"
+    ],
+    "left": [
+      "ArrowLeft",
+      "a"
+    ],
+    "right": [
+      "ArrowRight",
+      "d"
+    ],
+    "a": [
+      "Alt",
+      "z",
+      "j"
+    ],
+    "b": [
+      "Control",
+      "k",
+      "x"
+    ],
+    "start": [
+      "Enter"
+    ],
+    "select": [
+      "Shift"
+    ]
+  }
+}
