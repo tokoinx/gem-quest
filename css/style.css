@@ -661,7 +661,7 @@ body {
 }
 
 .player-stage .chromatic {
-  width: min(92vw, 360px);
+  width: min(92vw, 300px);
   box-sizing: border-box;
   padding: 14px 17px 15px;
   border-width: 4px;
